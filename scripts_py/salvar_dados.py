@@ -42,5 +42,6 @@ def salvar_dados_banco(conn):
             print("Dado inserido")
             # the connection is not auto committed by default, so we must commit to save our changes
             conn.commit()
+        print("Todos os dados inserido com sucesso !")
  except Error as e:
             print("Não conectado", e)
