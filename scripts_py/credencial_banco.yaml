@@ -1,0 +1,5 @@
+credenciais_banco:
+  host: 'localhost'
+  user: 'root'
+  password: 'nHH36232585@'
+  database : 'candidatos_goias'
