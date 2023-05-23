@@ -435,4 +435,51 @@ def candidatos_goias_pesquisa_especifica(ano, situacao, raca, genero, escolarida
           dados = candidatos
         )
     )
+
+
+@app.route('/candidatos_goias/eleicao/regiao/<string:regiao>', methods = ['GET'])
+def candidatos_goias_raca_candidato(regiao):
+    my_cursor = conn.cursor()
+    my_cursor.execute(f'SELECT *from dados_candidatos_goias where NM_UE = {regiao}')
+    candidatos_goias = my_cursor.fetchall()
+    candidatos = list()
+    for candidato in candidatos_goias:
+         candidatos.append(
+             {
+                 'ID':candidato[0],
+                 'ANO_ELEICAO':candidato[1],
+                 'CD_TIPO_ELEICAO':candidato[2],
+                 'NR_TURNO':candidato[3],
+                 'CD_ELEICAO':candidato[4],
+                 'DS_ELEICAO':candidato[5],
+                 'TP_ABRAGENCIA':candidato[6],
+                 'SG_UF':candidato[7],
+                 'SG_UE':candidato[8],
+                 'NM_UE':candidato[9],
+                 'NM_CANDIDATO':candidato[10],
+                 'NM_URNA_CANDIDATO':candidato[11],
+                 'CD_SITUACAO_CANDIDATO':candidato[12],
+                 'DS_SITUACAO_CANDIDATO':candidato[13],
+                 'SG_PARTIDO':candidato[14],
+                 'NM_PARTIDO':candidato[15],
+                 'DS_NACIONALIDADE':candidato[16],
+                 'DT_NASCIMENTO':candidato[17],
+                 'NR_IDADE_DATA_POSE':candidato[18],
+                 'DS_GENERO':candidato[19],
+                 'DS_GRAU_INSTRUCAO':candidato[20],
+                 'DS_ESTADO_CIVIL':candidato[21],
+                 'DS_COR_RACA':candidato[22],
+                 'DS_DESPESAS_MAX_CAMAPANHA':candidato[23],
+                 'DS_SIT_TOT_TURNO':candidato[24],
+                 'ST_REELEICAO':candidato[25],
+                 'DS_SITUACAO_CANDIDATO_URNA':candidato[26],
+                 'ST_CANDIDATO_INSERIDO_URNA':candidato[27]
+             }
+         )
+    return make_response(
+        jsonify(
+          mensagem = 'Candidatos_goias',
+          dados = candidatos
+        )
+    )
 app.run()

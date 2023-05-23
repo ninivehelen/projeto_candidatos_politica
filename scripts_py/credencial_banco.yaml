@@ -1,7 +1,7 @@
 credenciais_banco:
-  host: 'localhost'
-  user: 'root'
-  password: ''
+  host: 'localhost' #substitua caso seja diferente
+  user: 'root'   #substitua caso seja diferente
+  password: 'senha do seu banco'
   database : 'candidatos_goias' #banco de dados não alterar, pois apos a conexao este será criado automaticamente  
 
   
